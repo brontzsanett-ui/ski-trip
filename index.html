@@ -64,6 +64,10 @@
     color: #0284c7;
     font-weight: bold;
   }
+  .info-block .price {
+    color: #0369a1;
+    font-weight: 600;
+  }
   .price-tag {
     display: inline-block;
     background: #fef3c7;
@@ -93,6 +97,11 @@
     color: #1e293b;
   }
   .required { color: #dc2626; }
+  .optional-tag {
+    color: #64748b;
+    font-weight: 400;
+    font-size: 13px;
+  }
   .help-text {
     font-size: 13px;
     color: #64748b;
@@ -143,13 +152,23 @@
     border-color: #7dd3fc;
     background: #f0f9ff;
   }
-  .radio-option input[type="radio"] {
+  .radio-option input[type="radio"],
+  .radio-option input[type="checkbox"] {
     margin-right: 12px;
     accent-color: #0284c7;
     width: 18px;
     height: 18px;
+    flex-shrink: 0;
   }
   .radio-option span { font-size: 15px; }
+  .radio-option .opt-price {
+    margin-left: auto;
+    padding-left: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0369a1;
+    white-space: nowrap;
+  }
   button {
     background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
     color: #fff;
@@ -180,6 +199,7 @@
   @media (max-width: 600px) {
     header, .content { padding: 24px 20px; }
     header h1 { font-size: 22px; }
+    .radio-option .opt-price { font-size: 13px; }
   }
 </style>
 </head>
@@ -197,10 +217,10 @@
         There are only <strong>50 spots available</strong>, first come first served.
       </p>
 
-      <div class="price-tag">💰 £624 per person</div>
+      <div class="price-tag">💰 £624 per person (package, almost fully inclusive)</div>
 
       <div class="info-block">
-        <h2>What's included</h2>
+        <h2>What's included in the £624</h2>
         <ul>
           <li>7 nights accommodation (Sat 18:00 check-in, Sat 14:00 check-out)</li>
           <li>3 meals a day</li>
@@ -211,11 +231,11 @@
       </div>
 
       <div class="info-block">
-        <h2>🚌 Getting there – three options</h2>
+        <h2>🚌 Getting there – three options (travel cost on top)</h2>
         <ul>
-          <li>Flight to Geneva (Switzerland), then coach to Val d'Isère</li>
-          <li>Coach from Paris</li>
-          <li>Coach from London</li>
+          <li>Flight to Geneva (Switzerland), then coach to Val d'Isère — <span class="price">approx. £180 return</span></li>
+          <li>Coach from Paris — <span class="price">approx. £90 return</span></li>
+          <li>Coach from London — <span class="price">approx. £130 return</span></li>
         </ul>
       </div>
 
@@ -289,18 +309,22 @@
 
         <div class="form-group">
           <label>How would you like to travel to the resort? <span class="required">*</span></label>
+          <div class="help-text">Prices are rough return-trip estimates and will be confirmed once numbers are final.</div>
           <div class="radio-group">
             <label class="radio-option">
               <input type="radio" name="Travel option" value="Flight to Geneva + coach" required>
               <span>Flight to Geneva, then coach</span>
+              <span class="opt-price">≈ £180</span>
             </label>
             <label class="radio-option">
               <input type="radio" name="Travel option" value="Coach from Paris">
               <span>Coach from Paris</span>
+              <span class="opt-price">≈ £90</span>
             </label>
             <label class="radio-option">
               <input type="radio" name="Travel option" value="Coach from London">
               <span>Coach from London</span>
+              <span class="opt-price">≈ £130</span>
             </label>
             <label class="radio-option">
               <input type="radio" name="Travel option" value="No preference">
@@ -332,13 +356,39 @@
         </div>
 
         <div class="form-group">
-          <label>Do you have any dietary restrictions? <span class="required">*</span></label>
-          <div class="help-text">e.g. vegetarian, vegan, gluten-free, allergies, none</div>
-          <input type="text" name="Dietary restrictions" placeholder="Type 'none' if not applicable" required>
+          <label>Any dietary restrictions? <span class="optional-tag">(optional)</span></label>
+          <div class="help-text">Tick any that apply — feel free to skip if none.</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="checkbox" name="Dietary restrictions" value="Vegetarian">
+              <span>Vegetarian</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="Dietary restrictions" value="Vegan">
+              <span>Vegan</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="Dietary restrictions" value="Gluten-free">
+              <span>Gluten-free</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="Dietary restrictions" value="Lactose-free">
+              <span>Lactose-free / dairy-free</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="Dietary restrictions" value="Halal">
+              <span>Halal</span>
+            </label>
+            <label class="radio-option">
+              <input type="checkbox" name="Dietary restrictions" value="Nut allergy">
+              <span>Nut allergy</span>
+            </label>
+          </div>
+          <input type="text" name="Other dietary notes" placeholder="Anything else? e.g. shellfish allergy, pescatarian..." style="margin-top: 10px;">
         </div>
 
         <div class="form-group">
-          <label>Any comments or questions? (optional)</label>
+          <label>Any comments or questions? <span class="optional-tag">(optional)</span></label>
           <textarea name="Comments" placeholder="Let me know if you have any questions..."></textarea>
         </div>
 
