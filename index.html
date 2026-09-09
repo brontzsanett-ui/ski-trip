@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ski Trip Signup – Val d'Isère 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #0f172a;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+  }
+  header {
+    background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+    color: #fff;
+    padding: 40px 40px 32px;
+  }
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  header .subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+  }
+  .content { padding: 32px 40px; }
+  .info-block {
+    background: #f8fafc;
+    border-left: 4px solid #0284c7;
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+  .info-block h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #0369a1;
+  }
+  .info-block ul { list-style: none; }
+  .info-block li {
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+    font-size: 15px;
+  }
+  .info-block li::before {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: #0284c7;
+    font-weight: bold;
+  }
+  .price-tag {
+    display: inline-block;
+    background: #fef3c7;
+    color: #92400e;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .warning {
+    background: #fef2f2;
+    border-left: 4px solid #dc2626;
+    padding: 14px 20px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: #991b1b;
+  }
+  form { margin-top: 8px; }
+  .form-group { margin-bottom: 24px; }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #1e293b;
+  }
+  .required { color: #dc2626; }
+  .help-text {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: -4px;
+    margin-bottom: 8px;
+  }
+  input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  input[type="text"]:focus, input[type="email"]:focus {
+    outline: none;
+    border-color: #0284c7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+  }
+  textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    min-height: 90px;
+    resize: vertical;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  textarea:focus {
+    outline: none;
+    border-color: #0284c7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+  }
+  .radio-group { display: flex; flex-direction: column; gap: 8px; }
+  .radio-option {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .radio-option:hover {
+    border-color: #7dd3fc;
+    background: #f0f9ff;
+  }
+  .radio-option input[type="radio"] {
+    margin-right: 12px;
+    accent-color: #0284c7;
+    width: 18px;
+    height: 18px;
+  }
+  .radio-option span { font-size: 15px; }
+  button {
+    background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+    color: #fff;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    transition: transform 0.1s, box-shadow 0.15s;
+    font-family: inherit;
+  }
+  button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
+  }
+  button:active { transform: translateY(0); }
+  footer {
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+    padding: 20px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+  }
+  @media (max-width: 600px) {
+    header, .content { padding: 24px 20px; }
+    header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎿 Ski Trip Signup</h1>
+      <div class="subtitle">Val d'Isère · 20–27 March 2026 · MSc cohort trip · 50 spots only</div>
+    </header>
+
+    <div class="content">
+      <p style="margin-bottom: 20px; font-size: 15px;">
+        Hi everyone! We're organising a ski trip to <strong>Val d'Isère</strong> with the MSc cohort,
+        from <strong>Saturday 20 March to Saturday 27 March 2026</strong> (7 nights).
+        There are only <strong>50 spots available</strong>, first come first served.
+      </p>
+
+      <div class="price-tag">💰 £624 per person</div>
+
+      <div class="info-block">
+        <h2>What's included</h2>
+        <ul>
+          <li>7 nights accommodation (Sat 18:00 check-in, Sat 14:00 check-out)</li>
+          <li>3 meals a day</li>
+          <li>6.5 days lift pass</li>
+          <li>6.5 days equipment hire (skis, boots &amp; poles)</li>
+          <li>~12 hours of ski instruction (all levels)</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <h2>🚌 Getting there – three options</h2>
+        <ul>
+          <li>Flight to Geneva (Switzerland), then coach to Val d'Isère</li>
+          <li>Coach from Paris</li>
+          <li>Coach from London</li>
+        </ul>
+      </div>
+
+      <div class="warning">
+        ⚠️ <strong>Only 50 spots</strong> and they'll go quickly — please fill in the form asap if you're interested!
+      </div>
+
+      <form action="https://formsubmit.co/brontzsanett@gmail.com" method="POST">
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="New Ski Trip Signup – Val d'Isère 2026">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_autoresponse" value="Thanks for signing up for the Val d'Isère ski trip! I've received your response and will be in touch shortly with next steps. — Zsanett">
+
+        <div class="form-group">
+          <label>Full name <span class="required">*</span></label>
+          <input type="text" name="Full name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Phone number <span class="required">*</span></label>
+          <div class="help-text">Include country code, e.g. +44 7...</div>
+          <input type="text" name="Phone number" required>
+        </div>
+
+        <div class="form-group">
+          <label>ICL email address <span class="required">*</span></label>
+          <div class="help-text">e.g. abc123@ic.ac.uk</div>
+          <input type="email" name="ICL email" required>
+        </div>
+
+        <div class="form-group">
+          <label>Gender <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Gender" value="Female" required>
+              <span>Female</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Gender" value="Male">
+              <span>Male</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Gender" value="Non-binary / other">
+              <span>Non-binary / other</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Gender" value="Prefer not to say">
+              <span>Prefer not to say</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>How interested are you in joining? <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Interest level" value="Definitely coming" required>
+              <span>Yes, I'm definitely coming</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Interest level" value="Interested, still thinking">
+              <span>Interested, but still thinking about it</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Interest level" value="Just curious">
+              <span>Just curious, probably won't come</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>How would you like to travel to the resort? <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Travel option" value="Flight to Geneva + coach" required>
+              <span>Flight to Geneva, then coach</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Travel option" value="Coach from Paris">
+              <span>Coach from Paris</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Travel option" value="Coach from London">
+              <span>Coach from London</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Travel option" value="No preference">
+              <span>Not sure yet / no preference</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>What's your ski level? <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Ski level" value="Beginner" required>
+              <span>Beginner – this would be my first time</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Ski level" value="Basic">
+              <span>Basic – I've skied a few times</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Ski level" value="Intermediate">
+              <span>Intermediate – comfortable on blue/red runs</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Ski level" value="Advanced">
+              <span>Advanced – happy on black runs</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Do you have any dietary restrictions? <span class="required">*</span></label>
+          <div class="help-text">e.g. vegetarian, vegan, gluten-free, allergies, none</div>
+          <input type="text" name="Dietary restrictions" placeholder="Type 'none' if not applicable" required>
+        </div>
+
+        <div class="form-group">
+          <label>Any comments or questions? (optional)</label>
+          <textarea name="Comments" placeholder="Let me know if you have any questions..."></textarea>
+        </div>
+
+        <button type="submit">Submit signup 🎿</button>
+      </form>
+    </div>
+
+    <footer>
+      Responses go directly to brontzsanett@gmail.com · Val d'Isère 2026
+    </footer>
+  </div>
+</body>
+</html>
